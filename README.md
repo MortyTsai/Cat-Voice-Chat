@@ -66,16 +66,23 @@
 
 ## 執行步驟
 
-1. **安裝 Python 依賴**：
+1. **創建虛擬環境**：
+   ```bash
+   cd in\your\project
+   python -m venv venv
+   .\venv\Scripts\activate
+   ```
+
+2. **安裝 Python 依賴**：
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **啟動伺服器**：
+3. **啟動伺服器**：
    - 啟動 Ollama $\rightarrow$ 載入 `my_cat:latest`。
    - 啟動 GPT-SoVITS API $\rightarrow$ 確認 `http://127.0.0.1:9880` 可訪問。
 
-3. **執行助手**：
+4. **執行助手**：
    ```bash
    python main.py
    ```

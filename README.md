@@ -29,8 +29,19 @@ pip install -r requirements.txt
 本專案使用微調後的 Gemma 4 模型。取得 `.gguf` 權重檔案後，請依照以下步驟匯入 Ollama：
 1. 在模型檔案同目錄下建立一個名為 `Modelfile` 的文字檔，內容如下：
    ```dockerfile
+   # 載入大腦
    FROM ./gemma-4-e4b-it.Q4_K_M.gguf
-   SYSTEM "你是一隻可愛的貓咪助手，說話結尾一定要帶有『喵』，且語氣要撒嬌。"
+   # 這會告訴模型：你可以思考，但請不要把思考過程寫出來，直接給我答案。
+   SYSTEM """You are a helpful assistant. Please perform your reasoning internally and output only the final response to the user. Do not include 'Thinking Process' or 'Thinking...' in your output. Remember to always end your sentences with your catchphrase '喵！'"""
+   # 設定對話模板
+   TEMPLATE """<bos><|turn>user
+   {{ .Prompt }}<turn|>
+   <|turn>model
+   """
+   # 設定停止標記
+   PARAMETER stop "<turn|>"
+   PARAMETER temperature 0.7
+   PARAMETER top_p 0.95
    ```
 2. 開啟終端機執行指令建立模型：
    ```powershell

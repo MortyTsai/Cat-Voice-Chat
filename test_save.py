@@ -4,10 +4,10 @@ import requests
 payload = {
     "text_lang": "zh",
     "prompt_lang": "zh",
-    "prompt_text": "大家好，我是宁宁。我中文还不是很熟练，但是希望大家能喜欢我的声音，喵喵喵！", # 替換為你的參考音訊文字
-    "ref_audio_path": "D:/Python/CatVoiceAssistant/my_voice/tmpo1ftlmcz.wav", # 替換為你的參考音訊路徑
+    "prompt_text": "", # 替換為你的參考音訊文字
+    "ref_audio_path": ".wav", # 替換為你的參考音訊路徑
     "text": "這是一句測試語音，喵~",
-    "media_type": "wav",       # 測試時改回 wav
+    "media_type": "wav",  
     "streaming_mode": False    # 關閉串流，讓伺服器整句生成完再傳過來
 }
 

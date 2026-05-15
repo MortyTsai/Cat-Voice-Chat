@@ -9,10 +9,9 @@ from edge_tts import Communicate
 MODEL_NAME = "my_cat:latest"
 VOICE = "zh-CN-XiaoxiaoNeural" 
 
-VOICE_PITCH = "+25Hz" # 稍微再提高一點，增加幼態感
-VOICE_RATE = "+12%"   # 稍微加快，減少拖沓感
+VOICE_PITCH = "+25Hz" 
+VOICE_RATE = "+12%"   
 
-# 喵的隨機變體，避免每次都一樣
 MEOW_VARIANTS = ["，喵～", "，喵～～", "，喵！", "...喵～", " 喵～"]
 # =========================================
 
@@ -45,18 +44,16 @@ class TTSPlayer:
         """
         韻律增強器：將標準文本轉換為具有情感起伏的口語文本
         """
-        # 1. 隨機注入句首語助詞 (增加自然感)
+        # 1. 隨機注入句首語助詞
         fillers = ["嗯... ", "嘿嘿，", "那個... ", "唔... ", ""]
         if random.random() < 0.3: # 30% 機率加入
             text = random.choice(fillers) + text
 
         # 2. 標點符號情感化
-        # 將標準句號替換為波浪號或省略號，打破「新聞感」
         text = text.replace("。", "～")
         text = text.replace("！", "～～")
         
         # 3. 模擬呼吸停頓
-        # 在較長的句子中間隨機插入省略號
         if len(text) > 15:
             parts = text.split('，')
             if len(parts) > 1:
@@ -66,20 +63,15 @@ class TTSPlayer:
                 text = "，".join(parts)
 
         # 4. 喵的動態處理
-        # 尋找結尾的喵，並替換為隨機變體
         if "喵" in text:
-            # 匹配結尾的喵或標點後的喵
             text = re.sub(r'(喵)[～！\s]*$', random.choice(MEOW_VARIANTS), text)
-            # 處理句子中間的喵
             text = re.sub(r'([，。！？])喵', r'\1' + random.choice(MEOW_VARIANTS), text)
         else:
-            # 如果模型忘了說喵，我們幫它補一個 (強迫個性化)
             text += random.choice(MEOW_VARIANTS)
 
         return text
 
     async def play_text(self, text):
-        # 執行韻律增強
         processed_text = self.enhance_prosody(text)
         
         # 打印出處理後的文本，方便你觀察 TTS 實際上在讀什麼

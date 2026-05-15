@@ -15,8 +15,8 @@ GPT_SOVITS_API_URL = "http://127.0.0.1:9880/tts"
 TTS_PARAMS = {
     "text_lang": "zh",
     "prompt_lang": "zh",
-    "prompt_text": "大家好，我是宁宁。我中文还不是很熟练，但是希望大家能喜欢我的声音，喵喵喵！", 
-    "ref_audio_path": "D:/Python/CatVoiceAssistant/my_voice/tmpo1ftlmcz.wav",
+    "prompt_text": "", # 替換為你的參考音訊文字
+    "ref_audio_path": "", # 替換為你的參考音訊路徑
     "top_k": 15,
     "top_p": 0.85,
     "temperature": 0.8,
@@ -116,7 +116,7 @@ class CatAssistant:
 
     def chat_loop(self):
         print("="*50)
-        print("🐱 貓咪語音助手 (穩定流版) 已啟動！")
+        print("🐱 貓咪語音助手 已啟動！")
         print("="*50)
         while True:
             try:

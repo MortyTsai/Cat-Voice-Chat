@@ -86,10 +86,3 @@
 ---
 **License**: [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) (Following Gemma Base Model License)
 ```
-
-### 💡 最後的小提醒：
-1. **替換連結**：記得把 `[在此填入你的 Hugging Face 模型連結]` 換成你剛才建立的那個頁面網址。
-2. **檢查路徑**：確保 `requirements.txt` 已經建立，且包含 `requests`, `numpy`, `sounddevice`, `pydub`。
-3. **Git Push**：按照我之前給你的 `git add` $\rightarrow$ `git commit` $\rightarrow$ `git push` 流程上傳即可！
-
-這份 README 把你的**工程思維**展現得淋漓盡致，祝你在 GitHub 上收穫許多 Star！🐱✨
